@@ -41,13 +41,23 @@
             -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;background-position: fixed;}
            .faculty{display: flex;}
            .col-50{width: 50%;}
-           .svics-contact-info, .svics-services-info{display: flex; align-items: center;}
+           .svics-contact-info, .svics-services-info{display: flex; }
            .padding-top-bottom{padding: 20px 0;}
            .svics-services-facilities h4{padding: 18px 0 8px;}
            .svics-services-facilities, .svics-course-info{list-style-type: none;}
+           .padding-right{padding-right: 10px;}
+           .padding-left{padding-left: 10px;}
+           
+           @media(max-width:1024px){
+            .sticky{width: 100%;}
+            .svics-container{width: 100%;}
+           }
+           @media(max-width:767px){            
+            .svics-container{background-image: url("https://firebasestorage.googleapis.com/v0/b/recipeslist-7ae7a.appspot.com/o/Swami-Vivekanand-ji111233.jpg?alt=media&token=a8147758-dbb5-4225-aa27-ba18e10bffa3");}
+           }
             @media(max-width:480px){
-                .svics-container{width: 100%;background-image: url("https://firebasestorage.googleapis.com/v0/b/recipeslist-7ae7a.appspot.com/o/Swami-Vivekanand-ji111.jpg?alt=media&token=b270d623-85a4-4e82-823a-296f20ce9e40");}
-                .sticky{width: 100%;}
+                .svics-container{background-image: url("https://firebasestorage.googleapis.com/v0/b/recipeslist-7ae7a.appspot.com/o/Swami-Vivekanand-ji111.jpg?alt=media&token=b270d623-85a4-4e82-823a-296f20ce9e40");}
+                
             }
         </style>
     </head>
@@ -55,19 +65,19 @@
         <div class="svics-container">            
             <ul class="svics-nav-bar sticky">
                 <li class="svics-nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="javascript:;" id="svics-rewa">Home</a>
                 </li>
                 <li class="svics-nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="javascript:;" id="svics-about-info">About</a>
                 </li>
                 <li class="svics-nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="javascript:;" id="svics-services-info">Services</a>
                 </li>
                 <li class="svics-nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="javascript:;" id="svics-contact-info">Contact</a>
                 </li>
             </ul>               
-            <div class="logo-container bg-color extra-padding">
+            <div class="svics-rewa logo-container bg-color extra-padding">
                 <img src="https://firebasestorage.googleapis.com/v0/b/recipeslist-7ae7a.appspot.com/o/IMG-20201120-WA0001.jpg?alt=media&token=8fb95739-aed9-4a5e-bba4-c16926ddbef5" class="logo">
                 <div class="institute-name">
                     <h1>SWAMI VIVEKANAND INSTITUTE FOR CIVIL SERVICES</h1>
@@ -90,22 +100,22 @@
                     <ul class="svics-course-info">
                         <li>
                             <h4>
-                                mppsc 1yr                               
+                                MPPSC (1 year)                          
                             </h4>
                         </li>
                         <li>
                             <h4>
-                                foundation batch for mppsc 3 yrs
+                                Foundation Batch for MPPSC (3 years)
                             </h4>
                         </li>                       
                         <li>
-                            <h4>mpsi</h4>
+                            <h4>MP - SI</h4>
                         </li>
                         <li>
-                            <h4>patwari</h4>
+                            <h4>Patwari</h4>
                         </li>
                         <li>
-                            <h4>constable</h4>
+                            <h4>Constable</h4>
                         </li>
                     </ul>
                 </div>
@@ -153,22 +163,50 @@
             </div>
             
             <div class="svics-contact-info bg-color extra-padding">
-                <div class="col-50">
+                <div class="col-50 padding-right">
                     <h3>Address</h3>
-                    <p>savvy mother school campus<br> azad nagar<br> rewa (mp)
+                    <p>Savvy Mother School Campus<br> Azad Nagar<br>Rewa <br>Madhya Pradesh - 486001
                     </p>
                 </div>
-                <div class="col-50">
+                <div class="col-50 padding-left">
                     <h3>Contact</h3>
-                    <p>8888888888</p>
-                    <p>8888888888</p>
+                    <p>Mobile: 9425787888/7898395559</p>
+                    <p>Email: svicsrewa@gmail.com</p>
                 </div>               
             </div>
-            
-            <!-- <div class="sticky">
-                <h3 class="get-assistance">𝘎𝘦𝘵 𝘈𝘴𝘴𝘪𝘴𝘵𝘢𝘯𝘤𝘦</h3>  
-                <img src="assistance.png">              
-            </div> -->
         </div>
+        <script>
+            var domain = document.getElementsByClassName("nav-link");
+
+            for(var i = 0; i < domain.length; i++){
+                domain[i].addEventListener('click', function(){
+                    var currenInfo = $(".nav-link").hasClass("active");
+                    if(currenInfo == true){
+                        $(".nav-link").removeClass("active");
+                    }
+                    $(this).addClass("active");
+                    var scrollTodiv = $(this).attr('id');
+
+                    if(scrollTodiv == "svics-rewa"){
+                        scrollToInfo(scrollTodiv);
+                    }
+                    else if(scrollTodiv == "svics-about-info"){
+                        scrollToInfo(scrollTodiv);
+                    }
+                    else if(scrollTodiv == "svics-services-info"){
+                        scrollToInfo(scrollTodiv);
+                    }                    
+                    else if(scrollTodiv == "svics-contact-info"){
+                        scrollToInfo(scrollTodiv);
+                    }                    
+                });
+            }
+
+            function scrollToInfo(id){                
+                $('html, body').animate({
+                    scrollTop: $("."+id).offset().top - 50
+                }, 1000);
+            }
+        </script>
     </body>
 </html>
